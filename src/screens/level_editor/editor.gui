@@ -1,0 +1,1431 @@
+script: "/screens/level_editor/editor.gui_script"
+fonts {
+  name: "font"
+  font: "/assets/fonts/font.font"
+}
+textures {
+  name: "main_menu"
+  texture: "/assets/atlases/main.atlas"
+}
+nodes {
+  position {
+    x: 360.0
+    y: 640.0
+  }
+  size {
+    x: 720.0
+    y: 1280.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "root"
+  layer: "node"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -300.0
+    y: 580.0
+  }
+  size {
+    x: 100.0
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "back_btn"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+}
+nodes {
+  position {
+    y: 5.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+  }
+  size {
+    x: 240.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "<"
+  font: "font"
+  id: "back_btn_text"
+  parent: "back_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -150.0
+    y: 580.0
+  }
+  size {
+    x: 190.0
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "tab_field_btn"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+}
+nodes {
+  position {
+    y: 5.0
+  }
+  scale {
+    x: 0.35
+    y: 0.35
+  }
+  size {
+    x: 400.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "Level params"
+  font: "font"
+  id: "tab_field_btn_text"
+  parent: "tab_field_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 50.0
+    y: 580.0
+  }
+  size {
+    x: 190.0
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "tab_game_btn"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+}
+nodes {
+  position {
+    y: 5.0
+  }
+  scale {
+    x: 0.35
+    y: 0.35
+  }
+  size {
+    x: 400.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "Game params"
+  font: "font"
+  id: "tab_game_btn_text"
+  parent: "tab_game_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 250.0
+    y: 580.0
+  }
+  size {
+    x: 190.0
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "save_btn"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+}
+nodes {
+  position {
+    y: 5.0
+  }
+  scale {
+    x: 0.35
+    y: 0.35
+  }
+  size {
+    x: 400.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "Save"
+  font: "font"
+  id: "save_btn_text"
+  parent: "save_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 40.0
+  }
+  size {
+    x: 700.0
+    y: 900.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "hud_field"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 720.0
+    y: 1280.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "board"
+  parent: "hud_field"
+  layer: "node"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -320.0
+    y: -280.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "basket_remove_btn"
+  parent: "hud_field"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "-"
+  font: "font"
+  id: "basket_remove_btn_text"
+  parent: "basket_remove_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 320.0
+    y: -280.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "basket_add_btn"
+  parent: "hud_field"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "+"
+  font: "font"
+  id: "basket_add_btn_text"
+  parent: "basket_add_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -160.0
+    y: -480.0
+  }
+  size {
+    x: 280.0
+    y: 200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "sim_panel"
+  parent: "hud_field"
+  layer: "node"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 60.0
+  }
+  size {
+    x: 220.0
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "sim_run_btn"
+  parent: "sim_panel"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+}
+nodes {
+  position {
+    y: 5.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 400.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "Simulate"
+  font: "font"
+  id: "sim_run_btn_text"
+  parent: "sim_run_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -10.0
+  }
+  size {
+    x: 260.0
+    y: 60.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "sim_count"
+  parent: "sim_panel"
+  layer: "node"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -80.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "sim_minus_btn"
+  parent: "sim_count"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "-"
+  font: "font"
+  id: "sim_minus_btn_text"
+  parent: "sim_minus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  scale {
+    x: 0.36
+    y: 0.36
+  }
+  size {
+    x: 200.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "1000"
+  font: "font"
+  id: "sim_count_text"
+  parent: "sim_count"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 80.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "sim_plus_btn"
+  parent: "sim_count"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "+"
+  font: "font"
+  id: "sim_plus_btn_text"
+  parent: "sim_plus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 150.0
+    y: -480.0
+  }
+  size {
+    x: 320.0
+    y: 200.0
+  }
+  color {
+    x: 0.85
+    y: 0.85
+    z: 0.88
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "sim_results_box"
+  parent: "hud_field"
+  layer: "node"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 100.0
+  }
+  scale {
+    x: 0.22
+    y: 0.22
+  }
+  size {
+    x: 1200.0
+    y: 500.0
+  }
+  type: TYPE_TEXT
+  text: "Simulate results"
+  font: "font"
+  id: "text_sim_info"
+  pivot: PIVOT_N
+  parent: "sim_results_box"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -320.0
+    y: -200.0
+  }
+  scale {
+    x: 0.2
+    y: 0.2
+  }
+  size {
+    x: 400.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "weights"
+  font: "font"
+  id: "w_descr"
+  parent: "hud_field"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -320.0
+    y: -360.0
+  }
+  scale {
+    x: 0.2
+    y: 0.2
+  }
+  size {
+    x: 400.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "points"
+  font: "font"
+  id: "p_descr"
+  parent: "hud_field"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -900.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/ball_2"
+  id: "pin_tpl"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -900.0
+    y: -80.0
+  }
+  size {
+    x: 60.0
+    y: 120.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "basket_tpl"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 50.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/basket_tile"
+  id: "basket_body"
+  parent: "basket_tpl"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 11.0
+    y: 11.0
+    z: 11.0
+    w: 11.0
+  }
+}
+nodes {
+  position {
+    y: 20.0
+  }
+  scale {
+    x: 0.28
+    y: 0.28
+  }
+  size {
+    x: 160.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "1"
+  font: "font"
+  id: "weight_text"
+  parent: "basket_body"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -20.0
+  }
+  scale {
+    x: 0.28
+    y: 0.28
+  }
+  size {
+    x: 160.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "10"
+  font: "font"
+  id: "points_text"
+  parent: "basket_body"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 15.0
+    y: 50.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "w_plus_btn"
+  parent: "basket_tpl"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "+"
+  font: "font"
+  id: "w_plus_btn_text"
+  parent: "w_plus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -15.0
+    y: 50.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "w_minus_btn"
+  parent: "basket_tpl"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "-"
+  font: "font"
+  id: "w_minus_btn_text"
+  parent: "w_minus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 15.0
+    y: -50.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "p_plus_btn"
+  parent: "basket_tpl"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "+"
+  font: "font"
+  id: "p_plus_btn_text"
+  parent: "p_plus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -15.0
+    y: -50.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "p_minus_btn"
+  parent: "basket_tpl"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  size {
+    x: 80.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "-"
+  font: "font"
+  id: "p_minus_btn_text"
+  parent: "p_minus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 40.0
+  }
+  size {
+    x: 680.0
+    y: 720.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "hud_game"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 220.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "balls_count"
+  parent: "hud_game"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 40.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 800.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "balls count"
+  font: "font"
+  id: "balls_count_descr"
+  parent: "balls_count"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 800.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "10"
+  font: "font"
+  id: "balls_count_text"
+  parent: "balls_count"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "balls_minus_btn"
+  parent: "balls_count"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+  }
+  size {
+    x: 320.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "-"
+  font: "font"
+  id: "balls_minus_btn_text"
+  parent: "balls_minus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "balls_plus_btn"
+  parent: "balls_count"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+  }
+  size {
+    x: 320.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "+"
+  font: "font"
+  id: "balls_plus_btn_text"
+  parent: "balls_plus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "drop_many"
+  parent: "hud_game"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 40.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 800.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "drop many"
+  font: "font"
+  id: "drop_many_descr"
+  parent: "drop_many"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 800.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "5"
+  font: "font"
+  id: "drop_many_text"
+  parent: "drop_many"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "drop_minus_btn"
+  parent: "drop_many"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+  }
+  size {
+    x: 320.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "-"
+  font: "font"
+  id: "drop_minus_btn_text"
+  parent: "drop_minus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "drop_plus_btn"
+  parent: "drop_many"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+  }
+  size {
+    x: 320.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "+"
+  font: "font"
+  id: "drop_plus_btn_text"
+  parent: "drop_plus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -40.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "regen_sec"
+  parent: "hud_game"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 40.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 800.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "regen seconds"
+  font: "font"
+  id: "regen_sec_descr"
+  parent: "regen_sec"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 800.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "30"
+  font: "font"
+  id: "regen_sec_text"
+  parent: "regen_sec"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "regen_minus_btn"
+  parent: "regen_sec"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+  }
+  size {
+    x: 320.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "-"
+  font: "font"
+  id: "regen_minus_btn_text"
+  parent: "regen_minus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "regen_plus_btn"
+  parent: "regen_sec"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+  }
+  size {
+    x: 320.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "+"
+  font: "font"
+  id: "regen_plus_btn_text"
+  parent: "regen_plus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -170.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "regen_cap"
+  parent: "hud_game"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 40.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 800.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "regen cap"
+  font: "font"
+  id: "regen_cap_descr"
+  parent: "regen_cap"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 800.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "20"
+  font: "font"
+  id: "regen_cap_text"
+  parent: "regen_cap"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "regen_cap_minus_btn"
+  parent: "regen_cap"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+  }
+  size {
+    x: 320.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "-"
+  font: "font"
+  id: "regen_cap_minus_btn_text"
+  parent: "regen_cap_minus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "regen_cap_plus_btn"
+  parent: "regen_cap"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+  }
+  size {
+    x: 320.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "+"
+  font: "font"
+  id: "regen_cap_plus_btn_text"
+  parent: "regen_cap_plus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -300.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "cheat_add"
+  parent: "hud_game"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 40.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 800.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "cheat add balls"
+  font: "font"
+  id: "cheat_add_descr"
+  parent: "cheat_add"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 800.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "10"
+  font: "font"
+  id: "cheat_add_text"
+  parent: "cheat_add"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "cheat_add_minus_btn"
+  parent: "cheat_add"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+  }
+  size {
+    x: 320.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "-"
+  font: "font"
+  id: "cheat_add_minus_btn_text"
+  parent: "cheat_add_minus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 200.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "cheat_add_plus_btn"
+  parent: "cheat_add"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+  }
+  size {
+    x: 320.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "+"
+  font: "font"
+  id: "cheat_add_plus_btn_text"
+  parent: "cheat_add_plus_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+layers {
+  name: "node"
+}
+layers {
+  name: "text"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

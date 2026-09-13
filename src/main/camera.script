@@ -1,0 +1,35 @@
+local consts = require "common.consts"
+
+function init(self)
+	msg.post("#camera", "acquire_camera_focus")
+	self.base_pos = go.get_position()
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == consts.MSG.SHAKE then
+		self.shake_duration = message.duration or 0.2
+		self.shake_intensity = message.intensity or 0.01
+		self.shake_elapsed = 0
+	end
+end
+
+function update(self, dt)
+	if not self.shake_duration then
+		return
+	end
+
+	self.shake_elapsed = self.shake_elapsed + dt
+	if self.shake_elapsed >= self.shake_duration then
+		go.set_position(self.base_pos)
+		self.shake_duration = nil
+		return
+	end
+
+	local fade = 1 - self.shake_elapsed / self.shake_duration
+	local amount = self.shake_intensity * consts.DISPLAY_HEIGHT * fade
+	go.set_position(self.base_pos + vmath.vector3(
+		(math.random() * 2 - 1) * amount,
+		(math.random() * 2 - 1) * amount,
+		0
+	))
+end

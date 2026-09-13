@@ -1,0 +1,176 @@
+{
+  :bundle {
+    :html5 {
+      :architectures #{
+        "wasm-web"
+      }
+      :build_report false
+      :contentless false
+      :liveupdate false
+      :texture_compression "enabled"
+      :variant "release"
+      :with_symbols false
+    }
+    :last-bundle-command :project.bundle-html5
+    :output-directory "/Users/Denis/Desktop/builds1/plinkoGame"
+  }
+  :code {
+    :breakpoints [
+    ]
+    :find {
+      :term "total_score"
+    }
+  }
+  :open-assets {
+    :term "deb"
+  }
+  :search-in-files {
+    :exts ""
+    :include-libraries true
+    :term "[true]"
+  }
+  :workflow {
+    :open-tabs [
+      [
+        [
+          "/game.project"
+          :cljfx-form-view
+        ]
+        [
+          "/game.appmanifest"
+          :code
+        ]
+      ]
+    ]
+    :recent-files [
+      [
+        "/common/druid_style.lua"
+        :code
+      ]
+      [
+        "/common/level.lua"
+        :code
+      ]
+      [
+        "/common/save_data.lua"
+        :code
+      ]
+      [
+        "/common/level_store.lua"
+        :code
+      ]
+      [
+        "/common/utils.lua"
+        :code
+      ]
+      [
+        "/common/sounds.lua"
+        :code
+      ]
+      [
+        "/configs/level.lua"
+        :code
+      ]
+      [
+        "/configs/fall.lua"
+        :code
+      ]
+      [
+        "/screens/game/objects/pin.go"
+        :scene
+      ]
+      [
+        "/screens/game/objects/hole.go"
+        :scene
+      ]
+      [
+        "/screens/game/objects/basket.go"
+        :scene
+      ]
+      [
+        "/screens/game/objects/ball.go"
+        :scene
+      ]
+      [
+        "/druid/const.lua"
+        :code
+      ]
+      [
+        "/screens/game/modules/baskets.lua"
+        :code
+      ]
+      [
+        "/screens/game/modules/controller.lua"
+        :code
+      ]
+      [
+        "/common/consts.lua"
+        :code
+      ]
+      [
+        "/main/camera.script"
+        :code
+      ]
+      [
+        "/screens/game/modules/path.lua"
+        :code
+      ]
+      [
+        "/screens/game/modules/fall.lua"
+        :code
+      ]
+      [
+        "/screens/game/modules/economy.lua"
+        :code
+      ]
+      [
+        "/screens/game/game.script"
+        :code
+      ]
+      [
+        "/screens/level_editor/modules/preview.lua"
+        :code
+      ]
+      [
+        "/screens/level_editor/editor.gui_script"
+        :code
+      ]
+      [
+        "/screens/main_menu/main_menu.gui_script"
+        :code
+      ]
+      [
+        "/screens/game/game.gui_script"
+        :code
+      ]
+      [
+        "/screens/game/objects/pin.script"
+        :code
+      ]
+      [
+        "/screens/screens.lua"
+        :code
+      ]
+      [
+        "/screens/game/modules/debug_stats.lua"
+        :code
+      ]
+      [
+        "/screens/game/modules/board.lua"
+        :code
+      ]
+      [
+        "/common/board_layout.lua"
+        :code
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/game.appmanifest"
+        :code
+      ]
+    ]
+  }
+}

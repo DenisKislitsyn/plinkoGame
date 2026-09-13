@@ -1,0 +1,311 @@
+script: "/screens/game/game.gui_script"
+fonts {
+  name: "font"
+  font: "/assets/fonts/font.font"
+}
+textures {
+  name: "main_menu"
+  texture: "/assets/atlases/main.atlas"
+}
+nodes {
+  position {
+    x: 360.0
+    y: 640.0
+  }
+  size {
+    x: 720.0
+    y: 1280.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/empty"
+  id: "root"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_BOTTOM
+  adjust_mode: ADJUST_MODE_STRETCH
+  layer: "node"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -300.0
+    y: 520.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 680.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "Balls: 0"
+  font: "font"
+  id: "text_balls"
+  pivot: PIVOT_W
+  parent: "root"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -300.0
+    y: 470.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 680.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "Regen: --"
+  font: "font"
+  id: "text_regen"
+  pivot: PIVOT_W
+  parent: "root"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 300.0
+    y: 520.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 680.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "Score: 0"
+  font: "font"
+  id: "text_score"
+  pivot: PIVOT_E
+  parent: "root"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -260.0
+    y: 590.0
+  }
+  size {
+    x: 200.0
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "back_btn"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+}
+nodes {
+  position {
+    y: 5.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "BACK"
+  font: "font"
+  id: "back_btn_text"
+  parent: "back_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 260.0
+    y: 590.0
+  }
+  size {
+    x: 160.0
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "x2_btn"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+}
+nodes {
+  position {
+    y: 5.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "x2"
+  font: "font"
+  id: "x2_btn_text"
+  parent: "x2_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -220.0
+    y: -540.0
+  }
+  size {
+    x: 200.0
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "drop_btn"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+}
+nodes {
+  position {
+    y: 5.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "DROP 1"
+  font: "font"
+  id: "drop_btn_text"
+  parent: "drop_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -540.0
+  }
+  size {
+    x: 200.0
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "drop_many_btn"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+}
+nodes {
+  position {
+    y: 5.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "DROP 5"
+  font: "font"
+  id: "drop_many_btn_text"
+  parent: "drop_many_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 220.0
+    y: -540.0
+  }
+  size {
+    x: 200.0
+    y: 90.0
+  }
+  type: TYPE_BOX
+  texture: "main_menu/btn_green_normal"
+  id: "add_btn"
+  parent: "root"
+  layer: "node"
+  inherit_alpha: true
+  slice9 {
+    x: 43.0
+    y: 42.0
+    z: 43.0
+    w: 42.0
+  }
+}
+nodes {
+  position {
+    y: 5.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 40.0
+  }
+  type: TYPE_TEXT
+  text: "+ BALLS"
+  font: "font"
+  id: "add_btn_text"
+  parent: "add_btn"
+  layer: "text"
+  inherit_alpha: true
+}
+layers {
+  name: "node"
+}
+layers {
+  name: "text"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
+max_nodes: 32

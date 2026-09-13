@@ -1,0 +1,52 @@
+local monarch = require "monarch.monarch"
+local save_data = require "common.save_data"
+local level_store = require "common.level_store"
+local sounds = require "common.sounds"
+local druid = require "druid.druid"
+
+local SOUND_TEXTS = {
+	[true] = "SOUND ON",
+	[false] = "SOUND OFF"
+}
+
+local function refresh_sound_label(self)
+	gui.set_text(self.sound_btn_text, SOUND_TEXTS[sounds.get_sound_state()])
+end
+
+function init(self)
+	gui.set_render_order(2)
+	msg.post(".", "acquire_input_focus")
+
+	self.druid = druid.new(self)
+	self.sound_btn_text = gui.get_node("sound_btn_text")
+
+	self.druid:new_button("play_btn", function()
+		monarch.show(monarch.scr.game)
+	end)
+	self.druid:new_button("editor_btn", function()
+		monarch.show(monarch.scr.level_editor)
+	end)
+	self.druid:new_button("sound_btn", function()
+		sounds.change_sound_state()
+		refresh_sound_label(self)
+	end)
+	self.druid:new_button("reset_btn", function()
+		save_data.reset()
+		level_store.reset_default()
+		print("[main_menu] save data + level reset to defaults")
+	end)
+
+	refresh_sound_label(self)
+end
+
+function final(self)
+	self.druid:final()
+end
+
+function on_input(self, action_id, action)
+	return self.druid:on_input(action_id, action)
+end
+
+function on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+end

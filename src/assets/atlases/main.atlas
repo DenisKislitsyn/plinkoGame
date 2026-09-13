@@ -1,0 +1,28 @@
+images {
+  image: "/assets/images/empty.png"
+}
+images {
+  image: "/assets/images/ball_1.png"
+}
+images {
+  image: "/assets/images/ball_2.png"
+}
+images {
+  image: "/assets/images/ball_3.png"
+}
+images {
+  image: "/assets/images/body.png"
+}
+images {
+  image: "/assets/images/btn_green_normal.png"
+}
+images {
+  image: "/assets/images/btn_green_push.png"
+}
+images {
+  image: "/assets/images/basket_tile.png"
+}
+images {
+  image: "/assets/images/hole.png"
+}
+extrude_borders: 2

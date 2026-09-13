@@ -1,0 +1,8 @@
+font: "/assets/fonts/Nunito-Black.ttf"
+material: "/builtins/fonts/font-df.material"
+size: 64
+outline_alpha: 1.0
+outline_width: 4.0
+output_format: TYPE_DISTANCE_FIELD
+all_chars: true
+characters: " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"

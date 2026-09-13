@@ -1,0 +1,37 @@
+local consts = require "common.consts"
+local cfg = require "configs.fall"
+local sounds = require "common.sounds"
+
+local function bounce_url()
+	return msg.url("#sprite_bounce")
+end
+
+local function reset_bounce()
+	local url = bounce_url()
+	go.cancel_animations(url)
+	go.set(url, consts.PROP.SCALE, vmath.vector3(1))
+	go.set(url, consts.PROP.TINT, vmath.vector4(1, 1, 1, 1))
+	msg.post(url, consts.MSG.DISABLE)
+end
+
+local function play_bounce()
+	local url = bounce_url()
+	reset_bounce()
+	msg.post(url, consts.MSG.ENABLE)
+	go.set(url, consts.PROP.SCALE, vmath.vector3(1))
+	go.set(url, consts.PROP.TINT, vmath.vector4(1, 1, 1, 1))
+	local dur = cfg.pin_fx_duration
+	go.animate(url, consts.PROP.SCALE, go.PLAYBACK_ONCE_FORWARD, vmath.vector3(cfg.pin_fx_scale), go.EASING_OUTQUAD, dur)
+	go.animate(url, consts.PROP.TINT, go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), go.EASING_OUTQUAD, dur, 0, reset_bounce)
+end
+
+function init(self)
+	reset_bounce()
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == consts.MSG.PIN_HIT then
+		sounds.play_ping()
+		play_bounce()
+	end
+end

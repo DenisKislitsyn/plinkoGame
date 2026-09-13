@@ -1,0 +1,81 @@
+[bootstrap]
+main_collection = /main/main.collectionc
+
+[script]
+shared_state = 1
+
+[display]
+width = 720
+height = 1280
+high_dpi = 1
+samples = 1
+
+[android]
+input_method = HiddenInputField
+
+[project]
+title = plinkoGame
+version = 1.0.0
+dependencies#0 = https://github.com/britzl/monarch/archive/refs/tags/6.0.2.zip
+dependencies#1 = https://github.com/britzl/ludobits/archive/refs/tags/7.6.0.zip
+dependencies#2 = https://github.com/Insality/defold-event/archive/refs/tags/16.zip
+dependencies#3 = https://github.com/Insality/druid/archive/refs/tags/1.3.1.zip
+
+[html5]
+show_made_with_defold = 0
+show_fullscreen_button = 0
+scale_mode = stretch
+heap_size = 64
+htmlfile = /game.html
+cssfile = /builtins/manifests/web/dark_theme.css
+wasm_streaming = 1
+show_console_banner = 0
+
+[collectionfactory]
+max_count = 0
+
+[factory]
+max_count = 256
+
+[gui]
+max_count = 8
+max_particlefx_count = 8
+
+[label]
+max_count = 0
+
+[mesh]
+max_count = 0
+
+[model]
+max_count = 0
+
+[particle_fx]
+max_count = 16
+
+[tilemap]
+max_count = 0
+max_tile_count = 0
+
+[graphics]
+max_draw_calls = 512
+texture_profiles = /game.texture_profiles
+
+[input]
+use_accelerometer = 0
+
+[resource]
+max_resources = 512
+
+[native_extension]
+app_manifest = /game.appmanifest
+
+[collection_proxy]
+max_count = 4
+
+[network]
+http_thread_count = 2
+
+[sprite]
+max_count = 256
+

@@ -1,0 +1,178 @@
+local level_mod = require "common.level"
+local level_store = require "common.level_store"
+local board_layout = require "common.board_layout"
+local monarch = require "monarch.monarch"
+local druid = require "druid.druid"
+local preview = require "screens.level_editor.modules.preview"
+
+local function bind_stepper(self, plus_id, minus_id, on_plus, on_minus)
+	local plus = self.druid:new_button(plus_id, on_plus)
+	local minus = self.druid:new_button(minus_id, on_minus)
+	plus.on_repeated_click:subscribe(on_plus)
+	minus.on_repeated_click:subscribe(on_minus)
+	return plus, minus
+end
+
+local function refresh_static(self)
+	local d = self.draft
+	gui.set_text(self.balls_count_text, tostring(d.game.balls_start))
+	gui.set_text(self.drop_many_text, tostring(d.game.drop_many_count))
+	gui.set_text(self.regen_sec_text, tostring(d.game.regen_one_ball_seconds))
+	gui.set_text(self.regen_cap_text, tostring(d.game.balls_regen_cap))
+	gui.set_text(self.cheat_add_text, tostring(d.game.cheat_add_balls))
+	gui.set_text(self.sim_count_text, tostring(self.sim_count))
+	gui.set_text(self.text_sim_info, self.sim_text or "")
+end
+
+local function rebuild_board(self)
+	preview.rebuild(self, function(index)
+		if board_layout.toggle_slot(self.slots, index) then
+			preview.commit_layout(self)
+			preview.refresh_pin_tints(self)
+		end
+	end, function(basket_index, delta)
+		level_mod.adjust_weight(self.draft, basket_index, delta)
+		preview.refresh_weights(self)
+	end, function(basket_index, delta)
+		level_mod.adjust_score(self.draft, basket_index, delta)
+		preview.refresh_scores(self)
+	end)
+end
+
+local function set_tab(self, tab)
+	self.tab = tab
+	gui.set_enabled(self.hud_field, tab == "field")
+	gui.set_enabled(self.hud_game, tab == "game")
+end
+
+function init(self)
+	gui.set_render_order(4)
+	msg.post(".", "acquire_input_focus")
+
+	self.druid = druid.new(self)
+	self.draft = level_store.clone_active()
+	self.tab = "field"
+	self.sim_count = 1000
+	self.sim_text = "Simulate results"
+
+	self.hud_field = gui.get_node("hud_field")
+	self.hud_game = gui.get_node("hud_game")
+	self.text_sim_info = gui.get_node("text_sim_info")
+	self.balls_count_text = gui.get_node("balls_count_text")
+	self.drop_many_text = gui.get_node("drop_many_text")
+	self.regen_sec_text = gui.get_node("regen_sec_text")
+	self.regen_cap_text = gui.get_node("regen_cap_text")
+	self.cheat_add_text = gui.get_node("cheat_add_text")
+	self.sim_count_text = gui.get_node("sim_count_text")
+
+	preview.init(self)
+
+	self.druid:new_button("tab_field_btn", function()
+		set_tab(self, "field")
+	end)
+	self.druid:new_button("tab_game_btn", function()
+		set_tab(self, "game")
+	end)
+
+	self.druid:new_button("back_btn", function()
+		monarch.show(monarch.scr.main_menu)
+	end)
+	self.druid:new_button("save_btn", function()
+		preview.commit_layout(self)
+		level_store.set(self.draft)
+		self.sim_text = "saved"
+		refresh_static(self)
+	end)
+
+	self.druid:new_button("basket_add_btn", function()
+		preview.commit_layout(self)
+		if level_mod.add_basket(self.draft) then
+			rebuild_board(self)
+		end
+	end)
+	self.druid:new_button("basket_remove_btn", function()
+		preview.commit_layout(self)
+		if level_mod.remove_basket(self.draft) then
+			rebuild_board(self)
+		end
+	end)
+
+	bind_stepper(self, "balls_plus_btn", "balls_minus_btn", function()
+		self.draft.game.balls_start = self.draft.game.balls_start + 1
+		refresh_static(self)
+	end, function()
+		self.draft.game.balls_start = math.max(1, self.draft.game.balls_start - 1)
+		refresh_static(self)
+	end)
+
+	bind_stepper(self, "drop_plus_btn", "drop_minus_btn", function()
+		self.draft.game.drop_many_count = self.draft.game.drop_many_count + 1
+		refresh_static(self)
+	end, function()
+		self.draft.game.drop_many_count = math.max(1, self.draft.game.drop_many_count - 1)
+		refresh_static(self)
+	end)
+
+	bind_stepper(self, "regen_plus_btn", "regen_minus_btn", function()
+		self.draft.game.regen_one_ball_seconds = self.draft.game.regen_one_ball_seconds + 1
+		refresh_static(self)
+	end, function()
+		self.draft.game.regen_one_ball_seconds = math.max(1, self.draft.game.regen_one_ball_seconds - 1)
+		refresh_static(self)
+	end)
+
+	bind_stepper(self, "regen_cap_plus_btn", "regen_cap_minus_btn", function()
+		self.draft.game.balls_regen_cap = self.draft.game.balls_regen_cap + 1
+		refresh_static(self)
+	end, function()
+		self.draft.game.balls_regen_cap = math.max(1, self.draft.game.balls_regen_cap - 1)
+		refresh_static(self)
+	end)
+
+	bind_stepper(self, "cheat_add_plus_btn", "cheat_add_minus_btn", function()
+		self.draft.game.cheat_add_balls = self.draft.game.cheat_add_balls + 1
+		refresh_static(self)
+	end, function()
+		self.draft.game.cheat_add_balls = math.max(1, self.draft.game.cheat_add_balls - 1)
+		refresh_static(self)
+	end)
+
+	bind_stepper(self, "sim_plus_btn", "sim_minus_btn", function()
+		self.sim_count = self.sim_count + 500
+		refresh_static(self)
+	end, function()
+		self.sim_count = math.max(100, self.sim_count - 500)
+		refresh_static(self)
+	end)
+
+	self.druid:new_button("sim_run_btn", function()
+		preview.commit_layout(self)
+		local rows, count = level_mod.simulate(self.draft.baskets, self.sim_count)
+		local lines = { string.format("N=%d", count) }
+		for _, r in ipairs(rows) do
+			lines[#lines + 1] = string.format(
+				"#%d  %.1f%% → %.1f%% (%d)",
+				r.id, r.expected_pct, r.actual_pct, r.hits
+			)
+		end
+		self.sim_text = table.concat(lines, "\n")
+		refresh_static(self)
+	end)
+
+	set_tab(self, "field")
+	rebuild_board(self)
+	refresh_static(self)
+end
+
+function final(self)
+	preview.final(self)
+	self.druid:final()
+end
+
+function on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+end
+
+function on_input(self, action_id, action)
+	return self.druid:on_input(action_id, action)
+end

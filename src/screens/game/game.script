@@ -1,0 +1,21 @@
+local controller = require "screens.game.modules.controller"
+
+function init(self)
+	controller.init(self)
+end
+
+function final(self)
+	controller.final(self)
+end
+
+function update(self, dt)
+	controller.update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+	controller.on_message(self, message_id, message, sender)
+end
+
+function on_input(self, action_id, action)
+	return controller.on_input(self, action_id, action)
+end

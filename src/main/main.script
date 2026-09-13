@@ -1,0 +1,48 @@
+
+require "common.utils"
+local sounds = require 'common.sounds'
+local screens = require 'screens.screens'
+local monarch = require 'monarch.monarch'
+local save_data = require 'common.save_data'
+local camera_utils = require 'common.camera_utils'
+local consts = require 'common.consts'
+local druid = require 'druid.druid'
+
+local function resize_bg()
+	local b = camera_utils.screen_to_world_bounds()
+	local w = b.z - b.x
+	local h = b.y - b.w
+	go.set(consts.URL.BG, consts.PROP.SIZE, vmath.vector3(w, h, 0))
+end
+
+local function resize(self, event, data)
+	if event == window.WINDOW_EVENT_RESIZED then
+		self.t = self.t or timer.delay(0.06, false, function()
+			resize_bg()
+			self.t = nil
+		end)
+	end
+end
+
+function init(self)
+	math.randomseed(100000 * (socket.gettime() % 1))
+
+	druid.set_default_style(require "common.druid_style")
+
+	monarch.scr = screens
+	save_data.initialize(function()
+		sounds.initialize()
+		msg.post('.', consts.MSG.INIT)
+	end)
+
+	window.set_listener(resize)
+	timer.delay(0.05, false, function()
+		resize_bg()
+	end)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == consts.MSG.INIT then
+		monarch.show(monarch.scr.main_menu)
+	end
+end

@@ -1,0 +1,11 @@
+default_animation: "body"
+material: "/builtins/materials/sprite.material"
+size {
+  x: 722.0
+  y: 1282.0
+}
+size_mode: SIZE_MODE_MANUAL
+textures {
+  sampler: "texture_sampler"
+  texture: "/assets/atlases/main.atlas"
+}

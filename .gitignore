@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+.externalToolBuilders
+.project
+.cproject
+
+.lock-wscript
+*.pyc
+
+plinko_game/builtins
+plinko_game/.editor_settings
+plinko_game/.internal
+plinko_game/build
